@@ -1,6 +1,6 @@
-public class Text {
+class Text {
 
-  public void write(Object text, int x, int y, int size, boolean centeredX, color colour, PFont font) {
+  void write(Object text, int x, int y, int size, boolean centeredX, color colour, PFont font) {
     textFont(font, size);
     fill(colour);
     if(centeredX) {
@@ -8,6 +8,7 @@ public class Text {
     } else {
       text(String.valueOf(text), x, y);
     }
+    fill(Tron.defaultColor);
   }
 
 }
