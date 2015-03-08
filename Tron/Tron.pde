@@ -1,3 +1,5 @@
+import saito.objloader.*;
+
 PImage cursorPointer;
 PFont tronTitleFont;
 PFont subtitleFont;
