@@ -1,5 +1,4 @@
-import saito.objloader.*;
-
+// Initialisation de toutes les variables
 PImage cursorPointer;
 PFont tronTitleFont;
 PFont subtitleFont;
@@ -11,36 +10,40 @@ color subtitleColor;
 color rectLineColor;
 static color defaultColor = 255;
 
+static ArrayList<Gui> guis = new ArrayList<Gui>();
+
+// Fonction de démarrage de processing
 void setup() {
-  size(1000, 850, P3D);
+  // Initialisation de la taille de du programme, (largeur de l'écran, hauteur de l'écran) et indication que nous travaillons en 3D
+  size(displayWidth, displayHeight, P3D);
+  // On charge l'image du pointeur, et les polices du titre et du sous-titre
   cursorPointer = loadImage("cursor_POINTER.png");
   tronTitleFont = createFont("tron_font.ttf", 200, true);
-  //subtitleFont = createFont("subtitle_font.ttf", 200, true);
+  subtitleFont = createFont("subtitle_font.ttf", 200, true);
+  // Titre du jeu et son sous titre
   gameTitle = "Tron";
-  gameSubtitle = "L'Obligation";
+  gameSubtitle = "La menace fantôme";
+  // Initialisation des couleurs
   titleColor = color(111, 195, 223);
   subtitleColor = color(223, 116, 12);
   backgroundColor = color(12, 23, 31);
   rectLineColor = titleColor;
+  // Assignation de l'image du curseur
   cursor(cursorPointer);
+  // On indique que la position du texte se fait par rapport au haut à gauche
   textAlign(LEFT, TOP);
+  // On enlève les bordures des éléments
   noStroke();
+  // On enlève l'éclairage des éléments
   noLights();
+  // On active l'antialiasing x4
   smooth(4);
 }
-  
+
+// Cette fonction est appelée à chaque frame du jeu
 void draw() {
+  // On dessine le fond à chaque frame
   background(backgroundColor);
-  new Text().write(gameTitle, width / 2, 40, 140, true, titleColor, tronTitleFont);
-  //new Text().write(gameSubtitle, width / 2 + 4, 162, 47, true, subtitleColor, subtitleFont);
-  new Text().write(gameSubtitle, width / 2 + 4, 172, 60, true, subtitleColor, tronTitleFont);
-  quad(width / 2, 155, width / 2 + 300, 160, width / 2, 165, width / 2 - 300, 160, rectLineColor, false, 0);
-  lights();
-  box(150, 150, 150, 250, 350, 0);
-  box(150, 150, 150, 450, 350, 0);
-  box(150, 150, 150, 250, 550, 120);
-  box(150, 150, 150, 600, 350, -100);
-  noLights();
 }
 
 void quad(int x1, int y1, int x2, int y2, int x3, int y3, int x4, int y4, color colour, boolean hasStroke, color strokeColor) {
@@ -56,10 +59,11 @@ void quad(int x1, int y1, int x2, int y2, int x3, int y3, int x4, int y4, color 
 }
 
 void box(int width, int height, int depth, int x, int y, int z) {
+  stroke(rectLineColor);
   pushMatrix();
   translate(x, y, z);
-  rotateX(0.1);
-  rotateY(1.0);
+  rotateX(0.5);
+  rotateY(0.5);
   box(width, height, depth);
   popMatrix();
 }
@@ -68,6 +72,7 @@ void keyPressed() {
   
 }
 
+// Fonction de processing qui retourne si le programme est en plein écran ou non
 boolean sketchFullScreen() {
-  return false;
+  return true;
 }
