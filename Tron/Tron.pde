@@ -1,3 +1,6 @@
+import controlP5.*;
+import saito.objloader.*;
+
 // Initialisation de toutes les variables
 PImage cursorPointer;
 PFont tronTitleFont;
@@ -8,6 +11,7 @@ color backgroundColor;
 color titleColor;
 color subtitleColor;
 color rectLineColor;
+static Tron tron;
 static color defaultColor = 255;
 
 static ArrayList<Gui> guis = new ArrayList<Gui>();
@@ -29,7 +33,7 @@ void setup() {
   backgroundColor = color(12, 23, 31);
   rectLineColor = titleColor;
   // Assignation de l'image du curseur
-  cursor(cursorPointer);
+  cursor(cursorPointer, 0, 0);
   // On indique que la position du texte se fait par rapport au haut à gauche
   textAlign(LEFT, TOP);
   // On enlève les bordures des éléments
@@ -38,12 +42,19 @@ void setup() {
   noLights();
   // On active l'antialiasing x4
   smooth(4);
+  tron = this;
+  new GuiMainMenu(true);
 }
 
 // Cette fonction est appelée à chaque frame du jeu
 void draw() {
   // On dessine le fond à chaque frame
   background(backgroundColor);
+  for(int a = 0; a < guis.size(); a++) {
+    if(guis.get(a).isRendered()) {
+      guis.get(a).render();
+    }
+  }
 }
 
 void quad(int x1, int y1, int x2, int y2, int x3, int y3, int x4, int y4, color colour, boolean hasStroke, color strokeColor) {
@@ -74,5 +85,5 @@ void keyPressed() {
 
 // Fonction de processing qui retourne si le programme est en plein écran ou non
 boolean sketchFullScreen() {
-  return true;
+  return false;
 }

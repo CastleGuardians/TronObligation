@@ -1,10 +1,18 @@
 class GuiOptions extends Gui {
   
-  GuiOptions() {
-    super();
+  GuiOptions(boolean render) {
+    super(render);
   }
   
   void render() {
     
+  }
+  
+  String getID() {
+    return "gui-options";
+  }
+  
+  boolean isRendered() {
+    return this.isRendered;
   }
 }

@@ -2,6 +2,8 @@ class GuiMainMenu extends Gui {
   
   GuiMainMenu(boolean render) {
     super(render);
+    cp5.setFont(subtitleFont, 50);
+    cp5.addButton("Play").setColorBackground(color(0, 0, 0, 255)).setSize((int)textWidth("Play"), 50).setPosition(50, 200);
   }
   
   void render() {
