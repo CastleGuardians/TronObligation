@@ -3,6 +3,8 @@ import saito.objloader.*;
 
 // Initialisation de toutes les variables
 PImage cursorPointer;
+PImage cursorTron;
+PImage cursorTronClicked;
 PFont tronTitleFont;
 PFont subtitleFont;
 String gameTitle;
@@ -22,6 +24,8 @@ void setup() {
   size(displayWidth, displayHeight, P3D);
   // On charge l'image du pointeur, et les polices du titre et du sous-titre
   cursorPointer = loadImage("cursor_POINTER.png");
+  cursorTron = loadImage("cursor_TRON.png");
+  cursorTronClicked = loadImage("cursor_TRON_CLICKED.png");
   tronTitleFont = createFont("tron_font.ttf", 200, true);
   subtitleFont = createFont("subtitle_font.ttf", 200, true);
   // Titre du jeu et son sous titre
@@ -33,7 +37,7 @@ void setup() {
   backgroundColor = color(12, 23, 31);
   rectLineColor = titleColor;
   // Assignation de l'image du curseur
-  cursor(cursorPointer, 0, 0);
+  cursor(cursorTron, 0, 0);
   // On indique que la position du texte se fait par rapport au haut à gauche
   textAlign(LEFT, TOP);
   // On enlève les bordures des éléments
@@ -81,6 +85,14 @@ void box(int width, int height, int depth, int x, int y, int z) {
 
 void keyPressed() {
   
+}
+
+void mousePressed() {
+  cursor(cursorTronClicked, 0, 0);
+}
+
+void mouseReleased() {
+  cursor(cursorTron, 0, 0);
 }
 
 // Fonction de processing qui retourne si le programme est en plein écran ou non
