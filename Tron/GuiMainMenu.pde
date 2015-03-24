@@ -1,9 +1,10 @@
 class GuiMainMenu extends Gui {
   
+  Button buttonPlay;
+  
   GuiMainMenu(boolean render) {
     super(render);
-    cp5.setFont(subtitleFont, 50);
-    cp5.addButton("Play").setColorBackground(color(0, 0, 0, 255)).setSize((int)textWidth("Play"), 50).setPosition(50, 200);
+    this.buttonPlay = new Button("Play", 5, 200, 275, 60, subtitleFont, 70, backgroundColor, color(230, 230, 230, 255));
   }
   
   void render() {
@@ -11,11 +12,12 @@ class GuiMainMenu extends Gui {
     new Text().write(gameSubtitle, width / 2 + 4, 162, 47, true, subtitleColor, subtitleFont);
     //new Text().write(gameSubtitle, width / 2 + 4, 172, 60, true, subtitleColor, tronTitleFont);
     quad(width / 2, 155, width / 2 + 300, 160, width / 2, 165, width / 2 - 300, 160, rectLineColor, false, 0);
+    this.buttonPlay.update();
     lights();
-    box(150, 150, 150, 250, 350, 0);
-    box(150, 150, 150, 450, 350, 0);
-    box(150, 150, 150, 250, 550, 120);
-    box(150, 150, 150, 600, 350, -100);
+    //box(150, 150, 150, 250, 350, 0);
+    //box(150, 150, 150, 450, 350, 0);
+    //box(150, 150, 150, 250, 550, 120);
+    //box(150, 150, 150, 600, 350, -100);
     noLights();
   }
   
