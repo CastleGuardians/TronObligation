@@ -73,6 +73,18 @@ void quad(int x1, int y1, int x2, int y2, int x3, int y3, int x4, int y4, color 
   noStroke();
 }
 
+void triangle(int x1, int y1, int x2, int y2, int x3, int y3, color colour, boolean hasStroke, color strokeColor) {
+  if(hasStroke) {
+    stroke(strokeColor);
+  } else {
+    noStroke();
+  }
+  fill(colour);
+  triangle(x1, y1, x2, y2, x3, y3);
+  fill(defaultColor);
+  noStroke();
+}
+
 void box(int width, int height, int depth, int x, int y, int z) {
   stroke(rectLineColor);
   pushMatrix();
@@ -88,10 +100,12 @@ void keyPressed() {
 }
 
 void mousePressed() {
+  // Curseur orange
   cursor(cursorTronClicked, 0, 0);
 }
 
 void mouseReleased() {
+  // Curseur bleu
   cursor(cursorTron, 0, 0);
 }
 
