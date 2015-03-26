@@ -30,6 +30,18 @@ class GuiMainMenu extends Gui {
     //noLights();
   }
   
+  void screenEntered(Gui lastGui) {
+    
+  }
+  
+  void screenLeft(Gui newGui) {
+    
+  }
+  
+  boolean renderOverlayMenu() {
+    return true;
+  }
+  
   String getID() {
     return "gui-main-menu";
   }

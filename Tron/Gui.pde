@@ -12,4 +12,10 @@ abstract class Gui {
   abstract String getID();
   
   abstract boolean isRendered();
+  
+  abstract void screenEntered(Gui lastGui);
+  
+  abstract void screenLeft(Gui newGui);
+  
+  abstract boolean renderOverlayMenu();
 }

@@ -8,6 +8,18 @@ class GuiOptions extends Gui {
     
   }
   
+  void screenEntered(Gui lastGui) {
+    
+  }
+  
+  void screenLeft(Gui newGui) {
+    
+  }
+  
+  boolean renderOverlayMenu() {
+    return true;
+  }
+  
   String getID() {
     return "gui-options";
   }
