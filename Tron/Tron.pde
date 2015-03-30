@@ -1,3 +1,8 @@
+import peasy.*;
+import peasy.test.*;
+import peasy.org.apache.commons.math.*;
+import peasy.org.apache.commons.math.geometry.*;
+
 import controlP5.*;
 import saito.objloader.*;
 
@@ -5,8 +10,10 @@ import saito.objloader.*;
 PImage cursorPointer;
 PImage cursorTron;
 PImage cursorTronClicked;
+PImage arrowLeft;
 PFont tronTitleFont;
 PFont subtitleFont;
+PFont textFont;
 String gameTitle;
 String gameSubtitle;
 color backgroundColor;
@@ -15,6 +22,12 @@ color subtitleColor;
 color rectLineColor;
 static Tron tron;
 static color defaultColor = 255;
+int mouseDX;
+int mouseDY;
+static final float ONE_DEGREE_RADIAN = 0.1745;
+
+// Overlay
+ButtonImage backButton;
 
 static ArrayList<Gui> guis = new ArrayList<Gui>();
 
@@ -23,11 +36,13 @@ void setup() {
   // Initialisation de la taille de du programme, (largeur de l'écran, hauteur de l'écran) et indication que nous travaillons en 3D
   size(displayWidth, displayHeight, P3D);
   // On charge l'image du pointeur, et les polices du titre et du sous-titre
-  cursorPointer = loadImage("cursor_POINTER.png");
-  cursorTron = loadImage("cursor_TRON.png");
-  cursorTronClicked = loadImage("cursor_TRON_CLICKED.png");
-  tronTitleFont = createFont("tron_font.ttf", 200, true);
-  subtitleFont = createFont("subtitle_font.ttf", 200, true);
+  cursorPointer = loadImage("textures/cursor_POINTER.png");
+  cursorTron = loadImage("textures/cursor_TRON.png");
+  cursorTronClicked = loadImage("textures/cursor_TRON_CLICKED.png");
+  arrowLeft = loadImage("textures/arrow_left.png");
+  tronTitleFont = createFont("fonts/tron_font.ttf", 200, true);
+  subtitleFont = createFont("fonts/subtitle_font.ttf", 200, true);
+  textFont = createFont("fonts/Chromia.otf", 100, true);
   // Titre du jeu et son sous titre
   gameTitle = "Tron";
   gameSubtitle = "La menace fantôme";
@@ -36,6 +51,7 @@ void setup() {
   subtitleColor = color(223, 116, 12);
   backgroundColor = color(12, 23, 31);
   rectLineColor = titleColor;
+  backButton = new ButtonImage(arrowLeft, 225, 0, 60, 60, 42, 42, color(255, 255, 255, 0), color(0, 57, 57), color(0, 67, 67));
   // Assignation de l'image du curseur
   cursor(cursorTron, 0, 0);
   // On indique que la position du texte se fait par rapport au haut à gauche
@@ -47,22 +63,48 @@ void setup() {
   // On active l'antialiasing x4
   smooth(4);
   tron = this;
+  // On instancie l'interface principale
   new GuiMainMenu(true);
 }
 
 // Cette fonction est appelée à chaque frame du jeu
 void draw() {
+  mouseDX = mouseX - pmouseX;
+  mouseDY = mouseY - pmouseY;
   // On dessine le fond à chaque frame
   background(backgroundColor);
-  for(int a = 0; a < guis.size(); a++) {
-    if(guis.get(a).isRendered()) {
+  for (int a = 0; a < guis.size (); a++) {
+    // Si l'interface doit être rendue
+    if (guis.get(a).isRendered()) {
+      // On la rend
       guis.get(a).render();
+      // Si l'overlay de menu doit s'afficher
+      if (guis.get(a).renderOverlayMenu()) {
+        // On affiche l'overlay
+        overlayMenu(guis.get(a));
+      }
     }
   }
 }
 
+// Fonction de l'overlay
+void overlayMenu(Gui gui) {
+  rect(width, 60, 0, 0, color(0, 47, 47), false, 0);
+  rect(5, 60, 220, 0, backgroundColor, false, 0);
+  rect(5, 60, 285, 0, backgroundColor, false, 0);
+  new Text().write(String.valueOf(frameRate).substring(0, 2) + " fps", 550, 5, 20, false, titleColor, textFont);
+  new Text().write(gameTitle, 10, 4, 65, false, titleColor, tronTitleFont);
+  backButton.update();
+}
+
+// Fonction pour faire un rectangle
+void rect(int width, int height, int x, int y, color colour, boolean hasStroke, color strokeColor) {
+  quad(x, y, x + width, y, x + width, y + height, x, y + height, colour, hasStroke, strokeColor);
+}
+
+// Fonction pour faire un quadrilatère
 void quad(int x1, int y1, int x2, int y2, int x3, int y3, int x4, int y4, color colour, boolean hasStroke, color strokeColor) {
-  if(hasStroke) {
+  if (hasStroke) {
     stroke(strokeColor);
   } else {
     noStroke();
@@ -73,8 +115,9 @@ void quad(int x1, int y1, int x2, int y2, int x3, int y3, int x4, int y4, color 
   noStroke();
 }
 
+// Fonction pour faire un triangle
 void triangle(int x1, int y1, int x2, int y2, int x3, int y3, color colour, boolean hasStroke, color strokeColor) {
-  if(hasStroke) {
+  if (hasStroke) {
     stroke(strokeColor);
   } else {
     noStroke();
@@ -85,18 +128,30 @@ void triangle(int x1, int y1, int x2, int y2, int x3, int y3, color colour, bool
   noStroke();
 }
 
-void box(int width, int height, int depth, int x, int y, int z) {
+// Fonction pour faire un cube en 3D
+void box(int width, int height, int depth, int x, int y, int z, float rotateX, float rotateY) {
   stroke(rectLineColor);
   pushMatrix();
   translate(x, y, z);
-  rotateX(0.5);
-  rotateY(0.5);
+  rotateX(rotateX);
+  rotateY(rotateY);
   box(width, height, depth);
   popMatrix();
+  noStroke();
 }
 
 void keyPressed() {
-  
+  switch(key) {
+   case '1':
+     new GuiMainMenu(true);
+   break;
+   case '2':
+     new GuiOptionsSound(true);
+   break;
+   case '3':
+     new GuiMatchHistory(true);
+   break;
+  }
 }
 
 void mousePressed() {

@@ -1,10 +1,11 @@
 class GuiMatchHistory extends Gui { //<>//
   
-  PFont matchHistoryFont;  // On initialise la variablede la police 
+  PFont matchHistoryFont;  
   
   GuiMatchHistory(boolean render) {
     super(render);
-    matchHistoryFont = loadFont("Large9Normal-48.vlw");
+    // On initialise la variable de la police 
+    matchHistoryFont = loadFont("fonts/Large9Normal-48.vlw");
   }
   
   void render() {
