@@ -97,6 +97,9 @@ void overlayMenu(Gui gui) {
   new Text().write(gameTitle, 10, 4, 65, false, titleColor, tronTitleFont);
   new Text().write(gui.getTitle(), width / 2 - ((int)textWidth(gui.getTitle())) / 2, 4, 55, false, titleColor, tronTitleFont);
   backButton.update();
+  if(backButton.buttonClicked() ) {
+    
+  }
 }
 
 // Fonction pour faire un rectangle
@@ -168,5 +171,5 @@ void mouseReleased() {
 
 // Fonction de processing qui retourne si le programme est en plein écran ou non
 boolean sketchFullScreen() {
-  return true";
+  return true;
 }
