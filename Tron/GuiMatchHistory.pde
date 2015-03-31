@@ -43,6 +43,10 @@ class GuiMatchHistory extends Gui { //<>//
     return "gui-match-history";
   }
   
+  String getTitle() {
+    return "Match History";
+  }
+  
   boolean isRendered() {
     return this.isRendered;
   }

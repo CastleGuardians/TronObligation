@@ -30,6 +30,7 @@ static final float ONE_DEGREE_RADIAN = 0.1745;
 ButtonImage backButton;
 
 static ArrayList<Gui> guis = new ArrayList<Gui>();
+static ArrayList<String> guiHistory = new ArrayList<String>();
 
 // Fonction de démarrage de processing
 void setup() {
@@ -167,5 +168,5 @@ void mouseReleased() {
 
 // Fonction de processing qui retourne si le programme est en plein écran ou non
 boolean sketchFullScreen() {
-  return false;
+  return true";
 }
