@@ -13,12 +13,17 @@ class GuiOptionsSound extends Gui {
     rect(5, 85, width / 2 + 200, 100,  color(111, 195, 223), true, color(111, 195, 223));//bordure droite
     
     
-    new Text().write("Controls", width / 2 - 380, 245, 35, true, subtitleColor, subtitleFont);
-    quad(width / 2 -520, 245, width / 2 - 240, 245, width / 2 - 240, 290, width / 2 - 520, 290, color(111, 195, 223, 0), true, color(111, 195, 223));//235-175=60
+    new Text().write("Controls", width / 2 - 450, 155, 35, true, subtitleColor, subtitleFont);// Bouton Controls
+    //quad(width / 2 -520, 245, width / 2 - 240, 245, width / 2 - 240, 290, width / 2 - 520, 290, color(111, 195, 223, 0), true, color(111, 195, 223));//235-175=60
+    rect(350, 50,  width / 4 - 200, 150, color(111, 195, 223, 0), true, color(111, 195, 223));
+    
+    //new Text().write("Graphics", width / 2 - 450, 155, 35, true, subtitleColor, subtitleFont);// Bouton Graphics
     
     //Fleches
+    rect(width / 2 - 200, 10, 0, 140, color(111, 195, 223), true, color(111, 195, 223));
+    rect(width / 2 - 200, 10,width / 2 + 200 , 140, color(111, 195, 223), true, color(111, 195, 223));
     
-    quad(width / 2 -843, 235, width / 2 - 200, 235, width / 2 - 200, 245, width / 2 - 843, 245, color(111, 195, 223), true, color(111, 195, 223));
+   
      
     
   }
