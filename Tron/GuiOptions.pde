@@ -24,6 +24,10 @@ class GuiOptions extends Gui {
     return "gui-options";
   }
   
+  String getTitle() {
+    return "Options";
+  }
+  
   boolean isRendered() {
     return this.isRendered;
   }

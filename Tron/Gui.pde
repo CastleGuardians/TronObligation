@@ -30,6 +30,8 @@ abstract class Gui {
   
   abstract String getID();
   
+  abstract String getTitle();
+  
   abstract boolean isRendered();
   
   abstract void screenEntered(Gui lastGui);

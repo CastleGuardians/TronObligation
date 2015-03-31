@@ -92,8 +92,9 @@ void overlayMenu(Gui gui) {
   rect(width, 60, 0, 0, color(0, 47, 47), false, 0);
   rect(5, 60, 220, 0, backgroundColor, false, 0);
   rect(5, 60, 285, 0, backgroundColor, false, 0);
-  new Text().write(String.valueOf(frameRate).substring(0, 2) + " fps", 550, 5, 20, false, titleColor, textFont);
+  new Text().write(String.valueOf(frameRate).substring(0, 2) + " fps", width - 75, 5, 20, false, titleColor, textFont);
   new Text().write(gameTitle, 10, 4, 65, false, titleColor, tronTitleFont);
+  new Text().write(gui.getTitle(), width / 2 - ((int)textWidth(gui.getTitle())) / 2, 4, 55, false, titleColor, tronTitleFont);
   backButton.update();
 }
 

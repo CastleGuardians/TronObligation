@@ -54,6 +54,10 @@ class GuiMainMenu extends Gui {
     return "gui-main-menu";
   }
   
+  String getTitle() {
+    return "L'obligation";
+  }
+  
   boolean isRendered() {
     return this.isRendered;
   }
