@@ -20,7 +20,20 @@ class GuiMatchHistory extends Gui { //<>//
     rect(width - 350, 100, 250, height / 2 + 50, color(111, 195, 223, 255), false, color(111, 195, 223, 255));
     rect(width - 350, 100, 250, height / 2 + 205, color(111, 195, 223, 255), false, color(111, 195, 223, 255));
     
+    new Text().write("time:",width / 2 - 490 , 208 ,20 , true, color(255, 0, 0, 255), matchHistoryFont);//les "time 
+    new Text().write("time:",width / 2 - 390 , 208 ,20 , true, color(0, 255, 0, 255), matchHistoryFont);
+    new Text().write("time:",width / 2 - 290 , 208 ,20 , true, color(0, 0, 255, 255), matchHistoryFont);
+    new Text().write("time:",width / 2 - 190 , 208 ,20 , true, color(0, 0, 0, 255), matchHistoryFont);
+    new Text().write("time:",width / 2 - 90 , 208 ,20 , true, color(0, 255, 239, 255), matchHistoryFont);
+    new Text().write("time:",width / 2 + 10 , 208 ,20 , true, color(255, 255, 255, 255), matchHistoryFont);
+    new Text().write("time:",width / 2 + 110 , 208 ,20 , true, subtitleColor, matchHistoryFont);
+    new Text().write("time:",width / 2 + 210 , 208 ,20 , true, color(255, 0, 218, 255), matchHistoryFont);
+    new Text().write("time:",width / 2 + 310 , 208 ,20 , true, color(17, 0, 255, 255), matchHistoryFont); //#BleuMarine 
+    new Text().write("time:",width / 2 + 410 , 208 ,20 , true, color(112, 112, 112, 255), matchHistoryFont); //#50NuanceDeGray
     
+    new Text().write("your bike:",127 , height / 2 - 265 ,20 , true, color(112, 112, 112, 255), matchHistoryFont);
+    
+
 
     
     
