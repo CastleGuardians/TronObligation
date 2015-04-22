@@ -1,3 +1,10 @@
+import ddf.minim.effects.*;
+import ddf.minim.analysis.*;
+import ddf.minim.signals.*;
+import ddf.minim.spi.*;
+import ddf.minim.*;
+import ddf.minim.ugens.*;
+
 import peasy.*;
 import peasy.test.*;
 import peasy.org.apache.commons.math.*;
@@ -26,6 +33,11 @@ int mouseDX;
 int mouseDY;
 static final float ONE_DEGREE_RADIAN = 0.1745;
 
+Minim minim;
+AudioPlayer menuMusicBaseLayer;
+AudioPlayer menuMusicSecondLayer;
+AudioPlayer menuMusicTopLayer;
+
 // Overlay
 ButtonImage backButton;
 
@@ -53,6 +65,15 @@ void setup() {
   backgroundColor = color(12, 23, 31);
   rectLineColor = titleColor;
   backButton = new ButtonImage(arrowLeft, 225, 0, 60, 60, 42, 42, color(255, 255, 255, 0), color(0, 57, 57), color(0, 67, 67));
+  //
+  minim = new Minim(this);
+  menuMusicBaseLayer = minim.loadFile("/Sounds/TEAM_BUILDER_BASE_LAYER.mp3", 2048);
+  menuMusicSecondLayer = minim.loadFile("/Sounds/TEAM_BUILDER_SECOND_LAYER.mp3", 2048);
+  menuMusicTopLayer = minim.loadFile("/Sounds/TEAM_BUILDER_TOP_LAYER.mp3", 2048);
+ // menuMusicBaseLayer.loop();
+  //menuMusicSecondLayer.loop();
+  //menuMusicTopLayer.loop();
+  
   // Assignation de l'image du curseur
   cursor(cursorTron, 0, 0);
   // On indique que la position du texte se fait par rapport au haut à gauche
@@ -77,6 +98,26 @@ void draw() {
   for (int a = 0; a < guis.size (); a++) {
     // Si l'interface doit être rendue
     if (guis.get(a).isRendered()) {
+      if(guis.get(a).isPlayingMenuMusic()) {
+        if(!menuMusicBaseLayer.isPlaying()) {
+          menuMusicBaseLayer.loop();
+        } else {
+          if(guis.get(a).menuMusicLayerToPLay().equals("TOP")) {
+            if(!menuMusicTopLayer.isPlaying()) {
+              menuMusicTopLayer.play(menuMusicBaseLayer.position());
+            }
+          } else {
+            menuMusicTopLayer.pause();
+          }
+          if(guis.get(a).menuMusicLayerToPLay().equals("SECOND")) {
+            if(!menuMusicSecondLayer.isPlaying()) {
+              menuMusicSecondLayer.play(menuMusicBaseLayer.position());
+            }
+          } else {
+            menuMusicSecondLayer.pause();
+          }
+        }
+      }
       // On la rend
       guis.get(a).render();
       // Si l'overlay de menu doit s'afficher
@@ -171,5 +212,5 @@ void mouseReleased() {
 
 // Fonction de processing qui retourne si le programme est en plein écran ou non
 boolean sketchFullScreen() {
-  return true;
+  return false;
 }

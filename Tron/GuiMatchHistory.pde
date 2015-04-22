@@ -51,6 +51,14 @@ class GuiMatchHistory extends Gui { //<>//
     return true;
   }
   
+  boolean isPlayingMenuMusic() {
+    return true;
+  }
+  
+  String menuMusicLayerToPLay() {
+    return "TOP";
+  }
+  
   String getID() {
     return "gui-match-history";
   }

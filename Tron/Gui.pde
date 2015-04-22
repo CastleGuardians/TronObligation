@@ -37,6 +37,10 @@ abstract class Gui {
   
   abstract boolean isRendered();
   
+  abstract boolean isPlayingMenuMusic();
+  
+  abstract String menuMusicLayerToPLay();
+  
   abstract void screenEntered(Gui lastGui);
   
   abstract void screenLeft(Gui newGui);

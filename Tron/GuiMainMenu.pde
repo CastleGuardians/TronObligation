@@ -50,6 +50,14 @@ class GuiMainMenu extends Gui {
     return true;
   }
   
+  boolean isPlayingMenuMusic() {
+    return true;
+  }
+  
+  String menuMusicLayerToPLay() {
+    return "NONE";
+  }
+  
   String getID() {
     return "gui-main-menu";
   }

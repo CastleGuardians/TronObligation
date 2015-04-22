@@ -20,6 +20,14 @@ class GuiOptions extends Gui {
     return true;
   }
   
+  boolean isPlayingMenuMusic() {
+    return true;
+  }
+  
+  String menuMusicLayerToPLay() {
+    return "SECOND";
+  }
+  
   String getID() {
     return "gui-options";
   }
