@@ -1,4 +1,4 @@
-.DS_Store
+*.DS_Store
 applet
 application.linux32
 application.linux64
@@ -6,8 +6,8 @@ application.windows32
 application.windows64
 application.macosx
 Thumbs.db
-.obj
-.mtl
-.max
-.3DS
-.lwo
+*.obj
+*.mtl
+*.max
+*.3DS
+*.lwo
