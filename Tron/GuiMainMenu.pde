@@ -13,7 +13,6 @@ class GuiMainMenu extends Gui {
   }
   
   void render() {
-    
     //new Text().write(gameTitle, width / 2, 40, 140, true, titleColor, tronTitleFont);
     //new Text().write(gameSubtitle, width / 2 + 4, 162, 47, true, subtitleColor, subtitleFont);
     new Text().write("MAJ + 1 = GuiMainMenu", width / 2 + 4, 300, 25, true, subtitleColor, textFont);
