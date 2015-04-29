@@ -83,7 +83,7 @@ void setup() {
   // On enlève l'éclairage des éléments
   noLights();
   // On active l'antialiasing x4
-  smooth(4);
+  smooth(0);
   tron = this;
   // On instancie l'interface principale
   new GuiMainMenu(true);
@@ -99,19 +99,36 @@ void draw() {
     // Si l'interface doit être rendue
     if (guis.get(a).isRendered()) {
       if(guis.get(a).isPlayingMenuMusic()) {
+        println("BASE : " + menuMusicBaseLayer.position());
+        println("TOP  : " + menuMusicTopLayer.position());
+        println("SEC  : " + menuMusicSecondLayer.position());
         if(!menuMusicBaseLayer.isPlaying()) {
           menuMusicBaseLayer.loop();
         } else {
           if(guis.get(a).menuMusicLayerToPLay().equals("TOP")) {
             if(!menuMusicTopLayer.isPlaying()) {
-              menuMusicTopLayer.play(menuMusicBaseLayer.position());
+              menuMusicTopLayer.play();
+              menuMusicTopLayer.cue(menuMusicBaseLayer.position());
+            } else {
+                println(((float)menuMusicBaseLayer.position() / (float)menuMusicTopLayer.position()));
+              if(((float)menuMusicBaseLayer.position() / (float)menuMusicTopLayer.position()) < 0.95f || ((float)menuMusicBaseLayer.position() / (float)menuMusicTopLayer.position()) > 1.05f) {
+                println("test1");
+                menuMusicTopLayer.play(menuMusicBaseLayer.position());
+              }
             }
           } else {
             menuMusicTopLayer.pause();
           }
           if(guis.get(a).menuMusicLayerToPLay().equals("SECOND")) {
             if(!menuMusicSecondLayer.isPlaying()) {
-              menuMusicSecondLayer.play(menuMusicBaseLayer.position());
+              menuMusicSecondLayer.play();
+              menuMusicSecondLayer.cue(menuMusicBaseLayer.position());
+            } else {
+                println(((float)menuMusicBaseLayer.position() / (float)menuMusicSecondLayer.position()));
+              if(((float)menuMusicBaseLayer.position() / (float)menuMusicSecondLayer.position()) < 0.95f || ((float)menuMusicBaseLayer.position() / (float)menuMusicSecondLayer.position()) > 1.05f) {
+                println("test2");
+                menuMusicSecondLayer.play(menuMusicBaseLayer.position());
+              }
             }
           } else {
             menuMusicSecondLayer.pause();
@@ -212,5 +229,5 @@ void mouseReleased() {
 
 // Fonction de processing qui retourne si le programme est en plein écran ou non
 boolean sketchFullScreen() {
-  return false;
+  return true;
 }
