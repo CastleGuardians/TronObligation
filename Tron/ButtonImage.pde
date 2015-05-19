@@ -45,7 +45,9 @@ class ButtonImage {
       mouseLastFrameOn = true;
     } else {
       if(mouseLastFrameOn) {
-        buttonClicked = true;
+        if(mouseX >= x && mouseX <= x + buttonWidth && mouseY >= y && mouseY <= y + buttonHeight) {
+          buttonClicked = true;
+        }
         mouseLastFrameOn = false;
       }
     }

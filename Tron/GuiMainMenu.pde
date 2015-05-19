@@ -6,7 +6,7 @@ class GuiMainMenu extends Gui {
   
   GuiMainMenu(boolean render) {
     super(render);
-    this.buttonPlay = new Button("Play", 5, 200, 275, 60, subtitleFont, 70, backgroundColor, color(230, 230, 230, 255));
+    this.buttonPlay = new Button("Play", tronTitleFont, 135, 45, color(230, 230, 230, 255), 50, 150, -1, -1, color(255, 255, 255, 255), color(255, 255, 255, 0), color(255, 255, 255, 0));
     this.lightCycle = new OBJModel(Tron.tron, "quad.obj", "relative", TRIANGLES);
     this.lightCycle.scale(1);
     new ThreadMainMenuAnimation(this);
@@ -18,8 +18,6 @@ class GuiMainMenu extends Gui {
     new Text().write("MAJ + 1 = GuiMainMenu", width / 2 + 4, 300, 25, true, subtitleColor, textFont);
     new Text().write("MAJ + 2 = GuiOptionsSound", width / 2 + 4, 350, 25, true, subtitleColor, textFont);
     new Text().write("MAJ + 3 = GuiMatchHistory", width / 2 + 4, 400, 25, true, subtitleColor, textFont);
-    //new Text().write(gameSubtitle, width / 2 + 4, 172, 60, true, subtitleColor, tronTitleFont);
-    quad(width / 2, 155, width / 2 + 300, 160, width / 2, 165, width / 2 - 300, 160, rectLineColor, false, 0);
     this.buttonPlay.update();
     //ambientLight(102, 102, 102);
     pushMatrix();

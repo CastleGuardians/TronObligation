@@ -99,9 +99,6 @@ void draw() {
     // Si l'interface doit être rendue
     if (guis.get(a).isRendered()) {
       if(guis.get(a).isPlayingMenuMusic()) {
-        println("BASE : " + menuMusicBaseLayer.position());
-        println("TOP  : " + menuMusicTopLayer.position());
-        println("SEC  : " + menuMusicSecondLayer.position());
         if(!menuMusicBaseLayer.isPlaying()) {
           menuMusicBaseLayer.loop();
         } else {
@@ -110,9 +107,7 @@ void draw() {
               menuMusicTopLayer.play();
               menuMusicTopLayer.cue(menuMusicBaseLayer.position());
             } else {
-                println(((float)menuMusicBaseLayer.position() / (float)menuMusicTopLayer.position()));
               if(((float)menuMusicBaseLayer.position() / (float)menuMusicTopLayer.position()) < 0.95f || ((float)menuMusicBaseLayer.position() / (float)menuMusicTopLayer.position()) > 1.05f) {
-                println("test1");
                 menuMusicTopLayer.play(menuMusicBaseLayer.position());
               }
             }
@@ -124,9 +119,7 @@ void draw() {
               menuMusicSecondLayer.play();
               menuMusicSecondLayer.cue(menuMusicBaseLayer.position());
             } else {
-                println(((float)menuMusicBaseLayer.position() / (float)menuMusicSecondLayer.position()));
               if(((float)menuMusicBaseLayer.position() / (float)menuMusicSecondLayer.position()) < 0.95f || ((float)menuMusicBaseLayer.position() / (float)menuMusicSecondLayer.position()) > 1.05f) {
-                println("test2");
                 menuMusicSecondLayer.play(menuMusicBaseLayer.position());
               }
             }
@@ -229,5 +222,5 @@ void mouseReleased() {
 
 // Fonction de processing qui retourne si le programme est en plein écran ou non
 boolean sketchFullScreen() {
-  return true;
+  return false;
 }
