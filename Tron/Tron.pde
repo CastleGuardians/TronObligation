@@ -1,3 +1,8 @@
+import peasy.*;
+import peasy.test.*;
+import peasy.org.apache.commons.math.*;
+import peasy.org.apache.commons.math.geometry.*;
+
 import ddf.minim.effects.*;
 import ddf.minim.analysis.*;
 import ddf.minim.signals.*;
@@ -158,6 +163,13 @@ void rect(int width, int height, int x, int y, color colour, boolean hasStroke, 
   quad(x, y, x + width, y, x + width, y + height, x, y + height, colour, hasStroke, strokeColor);
 }
 
+// Fonction pour tra
+void line(int xBegin, int yBegin, int xEnd, int yEnd, color colour) {
+  stroke(colour);
+  line(xBegin, yBegin, xEnd, yEnd);
+  noStroke();
+}
+
 // Fonction pour faire un quadrilatère
 void quad(int x1, int y1, int x2, int y2, int x3, int y3, int x4, int y4, color colour, boolean hasStroke, color strokeColor) {
   if (hasStroke) {
@@ -206,6 +218,9 @@ void keyPressed() {
    break;
    case '3':
      new GuiMatchHistory(true);
+   break;
+   case '4':
+     new GuiGame(true);
    break;
   }
 }

@@ -1,7 +1,12 @@
 class GuiGame extends Gui {
   
+  PeasyCam cam;
+  
   GuiGame(boolean render) {
     super(render);
+    cam = new PeasyCam(Tron.tron, 100);
+    cam.setMinimumDistance(50);
+    cam.setMaximumDistance(500);
   }
   
   void render() {

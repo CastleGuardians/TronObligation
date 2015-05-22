@@ -3,21 +3,25 @@ class GuiMainMenu extends Gui {
   Button buttonPlay;
   OBJModel lightCycle;
   float vehicleRotateY = 0.0;
+  Slider slidertest;
   
   GuiMainMenu(boolean render) {
     super(render);
     this.buttonPlay = new Button("Play", tronTitleFont, 135, 45, color(230, 230, 230, 255), 50, 150, -1, -1, color(255, 255, 255, 255), color(255, 255, 255, 0), color(255, 255, 255, 0));
     this.lightCycle = new OBJModel(Tron.tron, "quad.obj", "relative", TRIANGLES);
     this.lightCycle.scale(1);
+    this.slidertest = new Slider(200, 500, 200, 50, true, true, textFont, 11, color(255, 0, 0), color(0, 255, 0), color(0, 0, 255), 0, 300, 50);
     new ThreadMainMenuAnimation(this);
   }
   
   void render() {
+    this.slidertest.update();
     //new Text().write(gameTitle, width / 2, 40, 140, true, titleColor, tronTitleFont);
     //new Text().write(gameSubtitle, width / 2 + 4, 162, 47, true, subtitleColor, subtitleFont);
     new Text().write("MAJ + 1 = GuiMainMenu", width / 2 + 4, 300, 25, true, subtitleColor, textFont);
     new Text().write("MAJ + 2 = GuiOptionsSound", width / 2 + 4, 350, 25, true, subtitleColor, textFont);
     new Text().write("MAJ + 3 = GuiMatchHistory", width / 2 + 4, 400, 25, true, subtitleColor, textFont);
+    new Text().write("MAJ + 4 = GuiGame", width / 2 + 4, 450, 25, true, subtitleColor, textFont);
     this.buttonPlay.update();
     //ambientLight(102, 102, 102);
     pushMatrix();
