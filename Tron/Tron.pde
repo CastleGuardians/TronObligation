@@ -1,3 +1,4 @@
+import java.util.List;
 import peasy.*;
 import peasy.test.*;
 import peasy.org.apache.commons.math.*;
@@ -27,6 +28,8 @@ PFont tronTitleFont;
 PFont subtitleFont;
 PFont textFont;
 String gameTitle;
+String gameTitle1;
+String gameTitle2;
 String gameSubtitle;
 color backgroundColor;
 color titleColor;
@@ -62,7 +65,9 @@ void setup() {
   subtitleFont = createFont("fonts/subtitle_font.ttf", 200, true);
   textFont = createFont("fonts/Chromia.otf", 100, true);
   // Titre du jeu et son sous titre
-  gameTitle = "Tron";
+  gameTitle = "Castle Guardians";
+  gameTitle1 = "Castle";
+  gameTitle2 = "Guadians";
   gameSubtitle = "La menace fantôme";
   // Initialisation des couleurs
   titleColor = color(111, 195, 223);
@@ -150,7 +155,8 @@ void overlayMenu(Gui gui) {
   rect(5, 60, 220, 0, backgroundColor, false, 0);
   rect(5, 60, 285, 0, backgroundColor, false, 0);
   new Text().write(String.valueOf(frameRate).substring(0, 2) + " fps", width - 75, 5, 20, false, titleColor, textFont);
-  new Text().write(gameTitle, 10, 4, 65, false, titleColor, tronTitleFont);
+  new Text().write(gameTitle1, 10, 4, 32, false, titleColor, tronTitleFont);
+  new Text().write(gameTitle2, 10, 30, 32, false, titleColor, tronTitleFont);
   new Text().write(gui.getTitle(), width / 2 - ((int)textWidth(gui.getTitle())) / 2, 4, 55, false, titleColor, tronTitleFont);
   backButton.update();
   if(backButton.buttonClicked() ) {
@@ -237,5 +243,5 @@ void mouseReleased() {
 
 // Fonction de processing qui retourne si le programme est en plein écran ou non
 boolean sketchFullScreen() {
-  return false;
+  return true;
 }

@@ -1,15 +1,31 @@
 class GuiGame extends Gui {
   
-  PeasyCam cam;
+  Match match;
   
   GuiGame(boolean render) {
     super(render);
-    cam = new PeasyCam(Tron.tron, 100);
-    cam.setMinimumDistance(50);
-    cam.setMaximumDistance(500);
+    List<Tiles> tiles = new ArrayList<Tiles>();
+    for(int a = 0; a < 395; a++) {
+      tiles.add(new Tiles(true, 0, "grass"));
+    }
+    tiles.add(new Tiles(true, 1, "tower"));
+    tiles.add(new Tiles(true, 0, "grass"));
+    tiles.add(new Tiles(true, 0, "grass"));
+    tiles.add(new Tiles(true, 1, "tower"));
+    tiles.add(new Tiles(true, 0, "grass"));
+    tiles.add(new Tiles(true, 0, "grass"));
+    tiles.add(new Tiles(true, 1, "tower"));
+    tiles.add(new Tiles(true, 0, "grass"));
+    tiles.add(new Tiles(true, 0, "grass"));
+    tiles.add(new Tiles(true, 1, "tower"));
+    for(int a = 0; a < 395; a++) {
+      tiles.add(new Tiles(true, 0, "grass"));
+    }
+    match = new Match(40, 20, color(100, 100, 100), tiles);
   }
   
   void render() {
+    match.tickMatch();
   }
   
   void screenEntered(Gui lastGui) {

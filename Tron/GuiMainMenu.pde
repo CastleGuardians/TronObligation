@@ -37,6 +37,9 @@ class GuiMainMenu extends Gui {
     //box(150, 150, 150, 600, 350, -100);
     noLights();
     //println(frameRate);
+    if(this.buttonPlay.buttonClicked()) {
+      new GuiGame(true);
+    }
   }
   
   void screenEntered(Gui lastGui) {
@@ -64,7 +67,7 @@ class GuiMainMenu extends Gui {
   }
   
   String getTitle() {
-    return "L'obligation";
+    return "";
   }
   
   boolean isRendered() {
