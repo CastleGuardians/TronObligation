@@ -2,14 +2,16 @@ class Tiles {
   
   boolean canGoThrough;
   int resistance;
+  String textureName;
   PImage texture;
+  String name;
   
-  //Tiles grass = new Tiles(true, 0, "grass");
-  
-  public Tiles(boolean canGoThrough, int resistance, String texture) {
+  public Tiles(boolean canGoThrough, int resistance, String texture, String name) {
     this.canGoThrough = canGoThrough;
     this.resistance = resistance;
+    this.textureName = texture;
     this.texture = loadImage("textures/" + texture + ".png");
+    this.name = name;
   }
   
   boolean canGoThrough() {
@@ -22,5 +24,13 @@ class Tiles {
   
   PImage getTexture() {
     return texture;
+  }
+  
+  String getTextureName() {
+    return textureName;
+  }
+  
+  String getName() {
+   return name; 
   }
 }

@@ -1,53 +1,44 @@
 class GuiMainMenu extends Gui {
   
   Button buttonPlay;
-  OBJModel lightCycle;
+  Button matchHistory;
+  Button levelEditor;
+  Button options;
+  Button quit;
   float vehicleRotateY = 0.0;
-  Slider slidertest;
   
   GuiMainMenu(boolean render) {
     super(render);
-    this.buttonPlay = new Button("Play", tronTitleFont, 135, 45, color(230, 230, 230, 255), 50, 150, -1, -1, color(255, 255, 255, 255), color(255, 255, 255, 0), color(255, 255, 255, 0));
-    this.lightCycle = new OBJModel(Tron.tron, "quad.obj", "relative", TRIANGLES);
-    this.lightCycle.scale(1);
-    this.slidertest = new Slider(200, 500, 200, 50, true, true, textFont, 11, color(255, 0, 0), color(0, 255, 0), color(0, 0, 255), 0, 300, 50);
-    new ThreadMainMenuAnimation(this);
+    this.buttonPlay = new Button("Play", tronTitleFont, 145, 45, color(230, 230, 230, 255), titleColor, 75, 150, -1, -1, color(255, 255, 255, 0), color(255, 255, 255, 0), color(255, 255, 255, 0));
+    this.matchHistory = new Button("Match History", tronTitleFont, 40, 15, color(230, 230, 230, 255), titleColor, 105, 355, -1, -1, color(255, 255, 255, 0), color(255, 255, 255, 0), color(255, 255, 255, 0));
+    this.levelEditor = new Button("Level Editor", tronTitleFont, 40, 15, color(230, 230, 230, 255), titleColor, 105, 425, -1, -1, color(255, 255, 255, 0), color(255, 255, 255, 0), color(255, 255, 255, 0));
+    this.options = new Button("Options", tronTitleFont, 40, 15, color(230, 230, 230, 255), titleColor, 105, 495, -1, -1, color(255, 255, 255, 0), color(255, 255, 255, 0), color(255, 255, 255, 0));
+    this.quit = new Button("Quit", tronTitleFont, 40, 15, color(230, 230, 230, 255), titleColor, 105, 565, -1, -1, color(255, 255, 255, 0), color(255, 255, 255, 0), color(255, 255, 255, 0));
+    //this.slidertest = new Slider(200, 500, 200, 50, true, true, textFont, 11, color(255, 0, 0), color(0, 255, 0), color(0, 0, 255), 0, 300, 50);
   }
   
   void render() {
-    this.slidertest.update();
-    //new Text().write(gameTitle, width / 2, 40, 140, true, titleColor, tronTitleFont);
-    //new Text().write(gameSubtitle, width / 2 + 4, 162, 47, true, subtitleColor, subtitleFont);
-    new Text().write("MAJ + 1 = GuiMainMenu", width / 2 + 4, 300, 25, true, subtitleColor, textFont);
-    new Text().write("MAJ + 2 = GuiOptionsSound", width / 2 + 4, 350, 25, true, subtitleColor, textFont);
-    new Text().write("MAJ + 3 = GuiMatchHistory", width / 2 + 4, 400, 25, true, subtitleColor, textFont);
-    new Text().write("MAJ + 4 = GuiGame", width / 2 + 4, 450, 25, true, subtitleColor, textFont);
     this.buttonPlay.update();
-    //ambientLight(102, 102, 102);
-    pushMatrix();
-    translate(width/2, height/2 + 250, 0);
-    //directionalLight(255, 255, 255, 0, 0, 0);
-    box(10, 10, 10, 0, 0, 0, 0, 0);
-    rotateY(vehicleRotateY);
-    this.lightCycle.draw();
-    popMatrix();
-    //box(150, 150, 150, 250, 350, 0);
-    //box(150, 150, 150, 450, 350, 0);
-    //box(150, 150, 150, 250, 550, 120);
-    //box(150, 150, 150, 600, 350, -100);
-    noLights();
-    //println(frameRate);
+    this.matchHistory.update();
+    this.levelEditor.update();
+    this.options.update();
+    this.quit.update();
+    
     if(this.buttonPlay.buttonClicked()) {
       new GuiGame(true);
     }
-  }
-  
-  void screenEntered(Gui lastGui) {
-    
-  }
-  
-  void screenLeft(Gui newGui) {
-    
+    if(this.matchHistory.buttonClicked()) {
+      new GuiMatchHistory(true);
+    }
+    if(this.levelEditor.buttonClicked()) {
+      new GuiLevelEditor(true);
+    }
+    if(this.options.buttonClicked()) {
+      new GuiOptionsGraphics(true);
+    }
+    if(this.quit.buttonClicked()) {
+      exit();
+    }
   }
   
   boolean renderOverlayMenu() {

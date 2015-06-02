@@ -6,20 +6,20 @@ class GuiGame extends Gui {
     super(render);
     List<Tiles> tiles = new ArrayList<Tiles>();
     for(int a = 0; a < 395; a++) {
-      tiles.add(new Tiles(true, 0, "grass"));
+      //tiles.add(new Tiles(true, 0, "grass"));
     }
-    tiles.add(new Tiles(true, 1, "tower"));
-    tiles.add(new Tiles(true, 0, "grass"));
-    tiles.add(new Tiles(true, 0, "grass"));
-    tiles.add(new Tiles(true, 1, "tower"));
-    tiles.add(new Tiles(true, 0, "grass"));
-    tiles.add(new Tiles(true, 0, "grass"));
-    tiles.add(new Tiles(true, 1, "tower"));
-    tiles.add(new Tiles(true, 0, "grass"));
-    tiles.add(new Tiles(true, 0, "grass"));
-    tiles.add(new Tiles(true, 1, "tower"));
+    //tiles.add(new Tiles(true, 1, "tower"));
+    //tiles.add(new Tiles(true, 0, "grass"));
+    //tiles.add(new Tiles(true, 0, "grass"));
+    //tiles.add(new Tiles(true, 1, "tower"));
+    //tiles.add(new Tiles(true, 0, "grass"));
+    //tiles.add(new Tiles(true, 0, "grass"));
+    //tiles.add(new Tiles(true, 1, "tower"));
+    //tiles.add(new Tiles(true, 0, "grass"));
+    //tiles.add(new Tiles(true, 0, "grass"));
+    //tiles.add(new Tiles(true, 1, "tower"));
     for(int a = 0; a < 395; a++) {
-      tiles.add(new Tiles(true, 0, "grass"));
+      //tiles.add(new Tiles(true, 0, "grass"));
     }
     match = new Match(40, 20, color(100, 100, 100), tiles);
   }
@@ -28,16 +28,8 @@ class GuiGame extends Gui {
     match.tickMatch();
   }
   
-  void screenEntered(Gui lastGui) {
-    
-  }
-  
-  void screenLeft(Gui newGui) {
-    
-  }
-  
   boolean renderOverlayMenu() {
-    return false;
+    return true;
   }
   
   boolean isPlayingMenuMusic() {

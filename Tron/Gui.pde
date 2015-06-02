@@ -13,6 +13,7 @@ abstract class Gui {
               Tron.guis.get(b).isRendered = false;
             }
           }
+          a = Tron.guis.size();
         } else if(a == Tron.guis.size() - 1) {
           for(int c = 0; c < Tron.guis.size(); c++) {
             Tron.guis.get(c).isRendered = false;
@@ -20,10 +21,12 @@ abstract class Gui {
           Tron.guiHistory.add(this.getID());
           this.isRendered = render;
           Tron.guis.add(this);
+          a = Tron.guis.size();
         }
       }
     } else {
           Tron.guiHistory.add(this.getID());
+          println("added3");
           this.isRendered = render;
           Tron.guis.add(this);
     }
@@ -41,9 +44,13 @@ abstract class Gui {
   
   abstract String menuMusicLayerToPLay();
   
-  abstract void screenEntered(Gui lastGui);
+  void screenEntered(Gui lastGui) {
+    
+  }
   
-  abstract void screenLeft(Gui newGui);
+  void screenLeft(Gui newGui) {
+    
+  }
   
   abstract boolean renderOverlayMenu();
 }

@@ -4,7 +4,8 @@ class Button {
   PFont font;
   int fontHeight;
   int fontSize;
-  color textColor;
+  color textColorNormal;
+  color textColorHover;
   int x;
   int y;
   int buttonWidth;
@@ -17,16 +18,16 @@ class Button {
   boolean buttonClicked;
   
 
-  Button(String text, PFont font, int fontSize, int fontHeight, color textColor, int x, int y, int buttonWidth, int buttonHeight, color normalColor, color hoverColor, color activeColor) {
+  Button(String text, PFont font, int fontSize, int fontHeight, color textColorNormal, color textColorHover, int x, int y, int buttonWidth, int buttonHeight, color normalColor, color hoverColor, color activeColor) {
     this.text = text;
     this.font = font;
     this.fontSize = fontSize;
     this.fontHeight = fontHeight;
-    this.textColor = textColor;
+    this.textColorNormal = textColorNormal;
+    this.textColorHover = textColorHover;
     this.x = x;
     this.y = y;
     textFont(font, fontSize);
-    println(textWidth(text));
     if(buttonWidth == -1) {
       this.buttonWidth = (int)textWidth(text) + 20;
     } else {
@@ -66,7 +67,11 @@ class Button {
       renderColor = normalColor;
     }
     rect(buttonWidth, buttonHeight, x, y, renderColor, false, 0);
-    new Text().write(text, x + buttonWidth / 2, y + buttonHeight / 2 - fontHeight, fontSize, true, textColor, font);
+    if(mouseX >= x && mouseX <= x + buttonWidth && mouseY >= y && mouseY <= y + buttonHeight) {
+      new Text().write(text, x + buttonWidth / 2, y + buttonHeight / 2 - fontHeight, fontSize, true, textColorHover, font);
+    } else {
+      new Text().write(text, x + buttonWidth / 2, y + buttonHeight / 2 - fontHeight, fontSize, true, textColorNormal, font);
+    }
   }
   
   boolean buttonClicked() {

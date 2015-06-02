@@ -25,9 +25,6 @@ class GuiMatchHistory extends Gui { //<>//
     rect(100, 100, width / 2 + 400, height / 2 + 50 , color(111, 195, 223, 0), true, color(111, 195, 223));
     rect(100, 100, width / 2 + 400, height / 2 + 205, color(111, 195, 223, 0), true, color(111, 195, 223)); 
     
-    
-    
-    
     new Text().write("Time: ", width / 2 - 520,  height / 2 - 240 , 20, false, color(16, 72, 145), matchHistoryFont);
     new Text().write("Kill(s): ", width / 2 - 220,  height / 2 - 210 , 20, false, color(16, 72, 145), matchHistoryFont);
     new Text().write("Date: ", width / 2 - 520,  height / 2 - 180 , 20, false, color(16, 72, 145), matchHistoryFont);
@@ -43,22 +40,6 @@ class GuiMatchHistory extends Gui { //<>//
     new Text().write("Time: ", width / 2 - 520,  height / 2 + 210 , 20, false, color(16, 72, 145), matchHistoryFont);
     new Text().write("Kill(s): ", width / 2 - 220,  height / 2 + 240 , 20, false, color(16, 72, 145), matchHistoryFont);
     new Text().write("Date: ", width / 2 - 520,  height / 2 + 270 , 20, false, color(16, 72, 145), matchHistoryFont);
-    
-   
-   
-    
-
-
-    
-    
-  }
-  
-  void screenEntered(Gui lastGui) {
-    
-  }
-  
-  void screenLeft(Gui newGui) {
-    
   }
   
   boolean renderOverlayMenu() {

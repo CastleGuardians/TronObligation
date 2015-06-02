@@ -14,6 +14,8 @@ class Slider {
   float minValue;
   float maxValue;
   float value;
+  boolean isClicking;
+  int mousePosition;
   
 
   Slider(int x, int y, int sliderWidth, int sliderHeight, boolean isFillingSlider, boolean showValue, PFont valueFont, int valueHeight, color strokeColor, color backgroundColor, color fillColor, float minValue, float maxValue, float value) {
@@ -31,6 +33,7 @@ class Slider {
     this.minValue = minValue;
     this.maxValue = maxValue;
     this.value = value;
+    this.isClicking = false;
   }
   
   void update() {
@@ -41,9 +44,27 @@ class Slider {
     line(x, y, x, y + sliderHeight, strokeColor);
     line(x + sliderWidth, y, x + sliderWidth, y + sliderHeight, strokeColor);
     if(mouseX >= x && mouseX <= x + sliderWidth && mouseY >= y && mouseY <= y + sliderHeight) {
-      if(mousePressed) {
-        value = (((float)mouseX) - x) * 100 / sliderWidth * maxValue / 100;
+      if(mousePressed && !this.isClicking) {
+        this.isClicking = true;
       }
+    }
+    if(mouseX >= x && mouseX <= x + sliderWidth) {
+      mousePosition = 0;
+    } else if(mouseX < x) {
+      mousePosition = -1;
+    } else if(mouseX > x + sliderWidth) {
+      mousePosition = 1;
+    }
+    if(!mousePressed && this.isClicking) {
+      this.isClicking = false;
+    }
+    if(this.isClicking) {
+      if(mousePosition == -1)
+      value = minValue;
+      if(mousePosition == 0)
+      value = (((float)mouseX) - x) * 100 / sliderWidth * maxValue / 100;
+      if(mousePosition == 1)
+      value = maxValue;
     }
     textFont(textFont, 20);
     if(showValue) {
